@@ -1,0 +1,293 @@
+var
+  a:array[1..20] of integer;
+  i, f, b, c, j, k, full, min, max: integer;
+begin
+  for i:=1 to 20 do
+    begin
+     b:= random(93)-22;
+     a[i]:=b;
+  end;
+  writeln(a);
+  full:=0;
+  max:=0;
+  for i:=20 downto 1 do 
+    begin 
+     if a[i]<0 then
+       begin
+       full+=1;
+       max:=20-full;
+       for c:=i to max do
+        begin 
+        a[c]:=a[c+1];
+        end;
+        end;
+        end; 
+        for i:=1 to max do
+   write(a[i],' ');
+end.
+var i, f, b, c, j, k, full, min, max,imin,imax: integer;
+  a: array [1..20] of integer;
+  begin
+  for i:=1 to 20 do
+    begin
+     b:= random(93)-22;
+     a[i]:=b;
+  end;
+  writeln(a);
+ max:=-23;
+ for i := 1 to 20 do
+  begin
+    if a[i]>max  then
+      max:=a[i];
+  end;
+  for i := 1 to 20 do
+  begin
+    if a[i] = max then
+    begin
+      imax := i;
+      break;
+    end;
+   end;
+  min:= 94;
+  for i := 1 to 20 do
+  begin
+    if a[i]<min   then
+      min:=a[i];
+  end;
+  for i := 1 to 20 do
+  begin
+    if a[i] = min then
+    begin
+      a[i]:=max;
+      break;
+    end;
+   end;
+   a[imax]:=min;
+   writeln(a);
+   end.
+const N = 20;
+var
+a: array [1..N] of integer;
+i: integer;
+begin
+  i:=1;
+  writeln ('исходный массив:');
+  For i:=1 to N do
+    read (a[i]);
+  writeln;
+  writeln ('измененный массив:');
+  For i:=1 to N do
+  begin
+    if a[i]>0 then a[i]:=0 else
+    a[i]:=sqr(a[i]);
+    write (a[i], ' ')
+  end;
+end.
+const N=20;
+var
+  m:array [1..N] of integer;
+  i, l, p, a, b, s:int64;
+Begin
+  l:=0; p:=1; s:=0;
+  writeln ('Исходный массив:');
+  for i:=1 to N do
+    begin
+    m[i]:=random(116)-22;
+    write (m[i], ' ');
+    end;
+    writeln;
+    writeln ('введите промежуток');
+    read (a, b);
+    for i:=1 to N do
+    begin
+      if i mod 2<>0 then 
+        if m[i] mod 2 = 0 then l:=l+1;
+      if m[i]<>0 then p:=p*m[i]; 
+    end;
+    for i:=1 to N do
+      begin
+      if (m[i]>=a) and (m[i]<=b) then  
+      s:=s+m[i];
+      end;
+    writeln('количество четных элементов массива, стоящих на нечетных местах: ', l);
+    writeln('произведение нечетных элементов массива равно ', p);
+    writeln('сумма элементов, принадлежащих промежутку [', a, ',', b, '] равна ', s);
+end.
+const N = 20;
+var
+a: array [1..N] of integer;
+i,hx, hn, max, min, p: integer;
+begin
+  writeln('исходный массив');
+  for i:=1 to N do
+    begin
+  a[i]:=random(118)-52;
+  write(a[i], ' ');
+  if a[i] mod 5 = 0 then p:=i;
+  end;
+  i:=1;
+  max:=a[1];
+  min:=a[1];
+repeat
+  begin
+    if max<a[i+1] then 
+        begin
+      max:=a[i+1];
+      hx:=i+1;
+        end;
+    if min>a[i+1] then
+        begin 
+      min:=a[i+1];
+      hn:=i+1;
+        end;
+    i:=i+1;
+  end;
+until i=N;
+Writeln;
+writeln('максимальный элемент массива и его номер: ', max, ' ',hx);
+writeln('минимальный элемент массива и его номер: ', min, ' ', hn);
+writeln('номер последнего элемента массива, кратного 5 - ', p);
+end.
+Program oneblockthree;
+const N=30;
+var A,B: array [1..N] of integer;
+var i, An, Bn: integer;
+begin
+  An:=30;
+  writeln ('Исходный массив');
+  for i:=1 to An do
+    begin
+    A[i]:=random(167)-99;
+    write (A[i], ' ');
+    end;
+    writeln (' ');
+    Bn:=0;
+  for i:=1 to An do
+    if A[i] mod 2 = 0 then
+    begin
+      Bn:=Bn+1;
+      B[Bn]:=A[i];
+    end;
+    writeln ('массив с четными числами');
+    for i:=1 to Bn do
+      write (B[i], ' ');
+end.
+Program maspyat;
+const N=20;
+var a, b: array [1..N] of integer;
+var i, s1, s2: integer;
+begin
+  for i:=1 to N do
+    begin
+    a[i]:=random(100); 
+        s1:=s1+a[i];
+    b[i]:=random(100);
+        s2:=s2+b[i];
+    end;
+    writeln ('исходные массивы:');
+    for i:=1 to N do 
+      write (a[i], ' ');
+    writeln ('');
+    for i:=1 to N do 
+      write (b[i], ' ');
+      writeln ('');
+if s1<s2 then begin
+  writeln ('сумма элементов меньше в первом массиве');
+  writeln ('измененный масив:');
+  for i:=1 to N do
+    begin
+    a[i]:=a[i]*10;
+  write (a[i], ' ');
+  end;
+  end
+  else begin
+      writeln ('сумма элементов меньше во втором массиве');
+  writeln ('измененный масив:');
+  for i:=1 to N do
+        begin
+    b[i]:=b[i]*10;
+      write (a[i], ' ');
+    end;
+    end;
+end.
+Program massem;
+const N=20;
+var a: array [1..N] of integer;
+var i, l, mx:integer;
+begin
+  l:=1;
+  writeln ('массив:');
+  for i:=1 to N do
+    begin
+    a[i]:=random(100);
+  write (a[i], ' ');
+    end;
+  writeln ('');
+  i:=1; mx:=0;
+    repeat
+      if a[i]<a[i+1] then l:=l+1
+      else 
+        begin
+      if l>mx then mx:=l;
+      l:=1;
+      end;
+      i:=i+1;
+      until i=N;
+      writeln ('максимальная длина неубывающего участка: ', mx);
+end.
+var
+a: array [1..20] of integer;
+i, N, posmin, min, el, pos: integer;
+begin
+  N:=20;
+  pos:=0;
+  writeln('исходный массив: ');
+  for i:=1 to N do
+    begin
+  a[i]:=random(101)-50;
+  write (a[i], ' ');
+    end;
+i:=1;
+if a[i]>0 then 
+  begin
+  el:=a[i];
+  pos:=1;
+  end
+  else
+  begin
+repeat
+  begin
+    i:=i+1;
+    end;
+    until a[i]>0;
+el:=a[i];
+pos:=i;
+end;   //нахождение первого положительного элемента и его позиции
+writeln;
+writeln('первый положительный элемент - ', el, ' и его позиция - ', pos);
+    for i:=pos to N-1 do
+      a[i]:=a[i+1];
+    N:=N-1; //удаление первого положительного элемента
+    
+     i:=1;
+  min:=a[1];
+  repeat
+  begin
+    if min>a[i+1] then
+        begin 
+      min:=a[i+1];
+      posmin:=i+1;
+        end;
+    i:=i+1;
+  end;
+until i=N; //нахождение наименьшего элемента
+writeln('наименьший элемент - ', min, ' и его позиция - ', posmin);
+    for i:=posmin to N-1 do
+      a[i]:=a[i+1];
+    N:=N-1;  //удаление наименьшего элемента
+    writeln('измененный массив:');
+    for i:=1 to N do
+      write (a[i], ' ');
+
+writeln;
+end.
